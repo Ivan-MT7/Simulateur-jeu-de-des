@@ -102,7 +102,7 @@ def tracer_point(x, y, longueur):
     down()
     fillcolor("black")
     begin_fill()
-    circle(longueur/6)
+    circle(longueur/8)
     end_fill()
 
 def afficher_message(x, y, texte):
@@ -205,27 +205,55 @@ def lancer_jeu():
     ## Ecrivez ici le code de la fonction
     x = -250
     afficher_message(0, 250, "Bienvenue dans un jeu de dé !")
-    for i in range(3) :
-        up()
-        goto(x, 0)
-        down()
-        tracer_carre(x, 0, 200)
-        choisir_face_a_afficher(x, 0, nombre_aleatoire(6), 200)
-        x = x+250
+    up()
+    goto(x, 0)
+    down()
+    tracer_carre(x, 0, 200)
+    chiffre1 = nombre_aleatoire(6)
+    choisir_face_a_afficher(x,0, chiffre1, 200)
+
+    x = x+250
+    up()
+    goto(x, 0)
+    down()
+    tracer_carre(x, 0, 200)
+    chiffre2 = nombre_aleatoire(6)
+    choisir_face_a_afficher(x, 0, chiffre2, 200)
+    x = x+250
+    up()
+    goto(x, 0)
+    down()
+
+    tracer_carre(x, 0, 200)
+    chiffre3 = nombre_aleatoire(6)
+    choisir_face_a_afficher(x, 0, chiffre3, 200)
+    score1 = str(comparer_chiffre(chiffre1, chiffre2, chiffre3))
+
     x = -250
-    for a in range(3) :
-        
-        up()
-        goto(x, -200)
-        down()
-        tracer_carre(x, -200, 200)
-        le_truc_aléatoire = nombre_aleatoire(6)
-        choisir_face_a_afficher(x, -200, le_truc_aléatoire, 200)
-        x = x+250
-    afficher_message(-400, 0, "Joueur1")
-    afficher_message(-400, -200, "Joueur2")
-    afficher_message(450, 0, "Score1:")
-    afficher_message(450, -200, "Score2:")
+    up()
+    goto(x, -200)
+    down()
+    tracer_carre(x, -200, 200)
+    chiffre4 = nombre_aleatoire(6)
+    choisir_face_a_afficher(x, -200, chiffre4, 200)
+    x = x+250
+
+    up()
+    goto(x, -200)
+    down()
+    tracer_carre(x, -200, 200)
+    chiffre5 = nombre_aleatoire(6)
+    choisir_face_a_afficher(x, -200, chiffre5, 200)
+    x = x+250
+
+    up()
+    goto(x, -200)
+    down()
+    tracer_carre(x, -200, 200)
+    chiffre6 = nombre_aleatoire(6)
+    choisir_face_a_afficher(x, -200, chiffre6, 200)
+    x = x+250
+    score2 = comparer_chiffre(chiffre4, chiffre5, chiffre6)
 
 
     
@@ -239,7 +267,17 @@ def lancer_jeu():
     # down()
     # tracer_carre(-750, 0, 200)
     # choisir_face_a_afficher(-750, 0, nombre_aleatoire(2), 200)
-    
+    afficher_message(-400, 0, "Joueur1")
+    afficher_message(-400, -200, "Joueur2")
+    afficher_message(450, 0, "Score1:")
+    afficher_message(450, -200, "Score2:")
+    afficher_message(525, 0,score1)
+    afficher_message(525, -200, score2)
+    if score1 > score2 :
+        afficher_message(0, -300, "Joueur1 a gagné")
+    else :
+        afficher_message(0, -300, "Joueur2 a gagné")
+
 lancer_jeu()
 
     
