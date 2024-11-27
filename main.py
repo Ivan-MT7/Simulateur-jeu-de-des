@@ -55,17 +55,17 @@ def comparer_chiffre(chiffre1, chiffre2, chiffre3):
     331
     """
     ## Ecrivez ici le code de la fonction
-    if chiffre1 > chiffre2 or chiffre1 >= chiffre2 and chiffre1 > chiffre3 or chiffre1 >= chiffre3 :
+    if chiffre1 >= chiffre2 and  chiffre1 >= chiffre3 :
         if chiffre2>chiffre3 :
             return str(chiffre1)+str(chiffre2)+str(chiffre3)
         else :
             return str(chiffre1)+str(chiffre3)+str(chiffre2)
-    elif chiffre2 > chiffre1 or chiffre2 >= chiffre1 and chiffre2> chiffre3 or chiffre2 >= chiffre3:
+    elif  chiffre2 >= chiffre1 and chiffre2 >= chiffre3:
         if chiffre1>chiffre3 :
             return str(chiffre2)+str(chiffre1)+str(chiffre3)
         else :
             return str(chiffre2)+str(chiffre3)+str(chiffre1)
-    elif chiffre3 > chiffre1 or chiffre3>chiffre1 and chiffre3 >chiffre2 or chiffre3>=chiffre1 :
+    elif chiffre3>=chiffre2 and chiffre3>=chiffre1 :
         if chiffre2 > chiffre1 :
             return str(chiffre3)+str(chiffre2)+str(chiffre1)
         else :
