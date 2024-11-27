@@ -55,27 +55,27 @@ def comparer_chiffre(chiffre1, chiffre2, chiffre3):
     331
     """
     ## Ecrivez ici le code de la fonction
-    if chiffre1 > chiffre2 and chiffre1 > chiffre3 :
+    if chiffre1 > chiffre2 or chiffre1 >= chiffre2 and chiffre1 > chiffre3 or chiffre1 >= chiffre3 :
         if chiffre2>chiffre3 :
             return str(chiffre1)+str(chiffre2)+str(chiffre3)
         else :
             return str(chiffre1)+str(chiffre3)+str(chiffre2)
-    elif chiffre2 > chiffre1 and chiffre2> chiffre3 :
+    elif chiffre2 > chiffre1 or chiffre2 >= chiffre1 and chiffre2> chiffre3 or chiffre2 >= chiffre3:
         if chiffre1>chiffre3 :
             return str(chiffre2)+str(chiffre1)+str(chiffre3)
         else :
             return str(chiffre2)+str(chiffre3)+str(chiffre1)
-    elif chiffre3 > chiffre1 and chiffre3 > chiffre2 :
+    elif chiffre3 > chiffre1 or chiffre3>chiffre1 and chiffre3 >chiffre2 or chiffre3>=chiffre1 :
         if chiffre2 > chiffre1 :
             return str(chiffre3)+str(chiffre2)+str(chiffre1)
         else :
             return str(chiffre3)+str(chiffre1)+str(chiffre2)
-    else :
-        return str(chiffre1) + str(chiffre2) + str(chiffre3)
+    
 # print(comparer_chiffre(5, 1, 1))
 # print(comparer_chiffre(1, 1, 1))
 # print(comparer_chiffre(1, 3, 3))
 # print(comparer_chiffre(1, 5, 3))
+print(comparer_chiffre(2, 5, 5))
 def tracer_carre(x, y, longueur):
     """ Procédure tracant un carré dont la longueur d'un 
     coté est 'longueur'. Ce tracé s'effecue à partir des coordonnées x,y du 
