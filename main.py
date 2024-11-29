@@ -14,7 +14,6 @@ def nombre_aleatoire(n):
         type : entier
     """
     ## Ecrivez ici le code de la fonction
-    assert n>=1 and n<=6
     nombre = randint(1, n)
     return nombre
 def couleur_aleatoire():
@@ -30,7 +29,7 @@ def couleur_aleatoire():
         type : tuple
     """
     ## Ecrivez ici le code de la fonction
-    return randint(0, 255)/255, randint(0, 255)/255, randint(0, 255)/255 
+    return nombre_aleatoire(255)/255, nombre_aleatoire(255)/255, nombre_aleatoire(255)/255 
 def comparer_chiffre(chiffre1, chiffre2, chiffre3):
     """ Fonction comparant trois chiffres décimaux et renvoyant le plus grand 
     nombre composé par ces trois chiffres
@@ -54,22 +53,9 @@ def comparer_chiffre(chiffre1, chiffre2, chiffre3):
     >>> comparer_chiffre(1, 3, 3)
     331
     """
+
     ## Ecrivez ici le code de la fonction
-    if chiffre1 >= chiffre2 and  chiffre1 >= chiffre3 :
-        if chiffre2>chiffre3 :
-            return str(chiffre1)+str(chiffre2)+str(chiffre3)
-        else :
-            return str(chiffre1)+str(chiffre3)+str(chiffre2)
-    elif  chiffre2 >= chiffre1 and chiffre2 >= chiffre3:
-        if chiffre1>chiffre3 :
-            return str(chiffre2)+str(chiffre1)+str(chiffre3)
-        else :
-            return str(chiffre2)+str(chiffre3)+str(chiffre1)
-    elif chiffre3>=chiffre2 and chiffre3>=chiffre1 :
-        if chiffre2 > chiffre1 :
-            return str(chiffre3)+str(chiffre2)+str(chiffre1)
-        else :
-            return str(chiffre3)+str(chiffre1)+str(chiffre2)
+    return str(''.join(sorted([str(chiffre1), str(chiffre2), str(chiffre3)], reverse = True)))
     
 # print(comparer_chiffre(5, 1, 1))
 # print(comparer_chiffre(1, 1, 1))
@@ -88,7 +74,7 @@ def tracer_carre(x, y, longueur):
     begin_fill()
     for i in range(4) :
         forward(longueur)
-        left(90)
+        circle(10, 90)
     end_fill()
 # tracer_carre(0, 0, 200)
 
@@ -202,35 +188,49 @@ def choisir_face_a_afficher(x, y, lance, longueur):
     point inférieur gauche de ce dé.
     """
     ## Ecrivez ici le code de la fonction
+    # if current == "1rang" :
+    # else :
+
     assert lance>=1
     if lance == 1:
+        tracer_carre(x, y, longueur)
         afficher_un(x, y, longueur)
+      
     elif lance == 2 :
+        tracer_carre(x, y, longueur)
         afficher_diagonale_2(x, y, longueur)
     elif lance == 3 :
+        tracer_carre(x, y, 200)
         afficher_un(x, y, longueur)
         afficher_diagonale_2(x, y, longueur)
     elif lance == 4 :
+        tracer_carre(x, y, 200)
         afficher_diagonale_1(x, y, longueur)
         afficher_diagonale_2(x, y, longueur)
     elif lance == 5 :
+        tracer_carre(x, y, 200)
         afficher_un(x, y, longueur)
         afficher_diagonale_1(x, y, longueur)
         afficher_diagonale_2(x, y, longueur)
     else :
+        tracer_carre(x, y, 200)
         afficher_diagonale_1(x, y, longueur)
         afficher_diagonale_2(x, y, longueur)
         afficher_horizontale_milieu(x, y, longueur)
 
+    
+
+
 def lancer_jeu():
     """ Programme prinicipal de la gestion du jeu"""
     ## Ecrivez ici le code de la fonction
+    
+
     x = -250
     afficher_message(0, 250, "Bienvenue dans un jeu de dés !")
     up()
     goto(x, 0)
     down()
-    tracer_carre(x, 0, 200)
     chiffre1 = nombre_aleatoire(6)
     choisir_face_a_afficher(x,0, chiffre1, 200)
 
@@ -238,7 +238,6 @@ def lancer_jeu():
     up()
     goto(x, 0)
     down()
-    tracer_carre(x, 0, 200)
     chiffre2 = nombre_aleatoire(6)
     choisir_face_a_afficher(x, 0, chiffre2, 200)
     x = x+250
@@ -246,16 +245,15 @@ def lancer_jeu():
     goto(x, 0)
     down()
 
-    tracer_carre(x, 0, 200)
     chiffre3 = nombre_aleatoire(6)
     choisir_face_a_afficher(x, 0, chiffre3, 200)
-    score1 = str(comparer_chiffre(chiffre1, chiffre2, chiffre3))
+    score1 = (comparer_chiffre(chiffre1, chiffre2, chiffre3))
 
     x = -250
     up()
     goto(x, -250)
     down()
-    tracer_carre(x, -250, 200)
+    
     chiffre4 = nombre_aleatoire(6)
     choisir_face_a_afficher(x, -250, chiffre4, 200)
     x = x+250
@@ -263,7 +261,6 @@ def lancer_jeu():
     up()
     goto(x, -250)
     down()
-    tracer_carre(x, -250, 200)
     chiffre5 = nombre_aleatoire(6)
     choisir_face_a_afficher(x, -250, chiffre5, 200)
     x = x+250
@@ -271,24 +268,10 @@ def lancer_jeu():
     up()
     goto(x, -250)
     down()
-    tracer_carre(x, -250, 200)
     chiffre6 = nombre_aleatoire(6)
     choisir_face_a_afficher(x, -250, chiffre6, 200)
     x = x+250
     score2 = comparer_chiffre(chiffre4, chiffre5, chiffre6)
-
-
-    
-    # up()
-    # goto(-500, 0)
-    # down()
-    # tracer_carre(-500, 0, 200)
-    # choisir_face_a_afficher(-500, 0, nombre_aleatoire(2), 200)
-    # up()
-    # goto(-750, 0)
-    # down()
-    # tracer_carre(-750, 0, 200)
-    # choisir_face_a_afficher(-750, 0, nombre_aleatoire(2), 200)
     afficher_message(-400, 80, "Joueur1")
     afficher_message(-400, -175, "Joueur2")
     afficher_message(450, 0, "Score1:")
@@ -307,4 +290,5 @@ TurtleScreen._RUNNING = True
 hideturtle()
 ## testez ici vos fonctions
 exitonclick()
+
 
