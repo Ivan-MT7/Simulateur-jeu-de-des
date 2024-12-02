@@ -56,11 +56,6 @@ def comparer_chiffre(chiffre1, chiffre2, chiffre3):
 
     ## Ecrivez ici le code de la fonction
     return str(''.join(sorted([str(chiffre1), str(chiffre2), str(chiffre3)], reverse = True)))
-    
-# print(comparer_chiffre(5, 1, 1))
-# print(comparer_chiffre(1, 1, 1))
-# print(comparer_chiffre(1, 3, 3))
-# print(comparer_chiffre(1, 5, 3))
 print(comparer_chiffre(2, 5, 5))
 def tracer_carre(x, y, longueur):
     """ Procédure tracant un carré dont la longueur d'un 
@@ -103,11 +98,6 @@ def afficher_message(x, y, texte):
         write(texte, False, font=('Courrier', 30, 'normal'))
     else : 
          write(texte, False, font=('Courrier', 12, 'normal'))
-
-
-# afficher_message(0, -50, "Bienvenue dans un jeu de dé !")
-
-
 def afficher_un(x, y, longueur):
     """
     Procédure affichant le point milieu d'un dé, dont la longueur d'un 
@@ -118,8 +108,6 @@ def afficher_un(x, y, longueur):
     up()
     tracer_point(x, y, longueur, 2.1, 2.2)
     down()
-# tracer_point(x,y,longueur)
-
 def afficher_diagonale_1(x, y, longueur):
     """
     Procédure affichant les deux points de la diagonale 1 d'un dé, dont la longueur 
@@ -128,16 +116,9 @@ def afficher_diagonale_1(x, y, longueur):
     """
     ## Ecrivez ici le code de la fonction
     up()
-    # goto(x + longueur/10*8,y + longueur/10*8 - longueur/10)
-    # down()
     tracer_point(x,y,longueur, 20, 150 )
     tracer_point(x,y,longueur, 1.05, 1.1)
     down()
-
-    
-
-
-#afficher_un et afficer_diagonale_1 forment un trois
 def afficher_diagonale_2(x, y, longueur):
     """
     Procédure affichant les deux points de la diagonale 2 d'un dé, dont la longueur 
@@ -149,12 +130,6 @@ def afficher_diagonale_2(x, y, longueur):
     tracer_point(x,y,longueur, 20, 1.1 )
     tracer_point(x,y,longueur, 1.05, 150 )
     down()
-
-   
-
-# afficher_diagonale_2(0, 0, 200)#X
-
-#afficher_un, afficher_diagonale_1, afficher_diagonale_2 forment un 5
 def afficher_horizontale_milieu(x, y, longueur):
     """
     Procédure affichant les deux points de l'horizontale du milieu d'un dé, dont la longueur 
@@ -166,10 +141,6 @@ def afficher_horizontale_milieu(x, y, longueur):
     tracer_point(x,y,longueur, 20, 2.2)
     tracer_point(x,y, longueur, 1.05, 2.2)
     down()
-    
-#X
-
-
 def choisir_face_a_afficher(x, y, lance, longueur):
     """
     Procédure affichant la face d'un dé correpondant à "lance", dont la longueur 
@@ -203,10 +174,6 @@ def choisir_face_a_afficher(x, y, lance, longueur):
         afficher_diagonale_1(x, y, longueur)
         afficher_diagonale_2(x, y, longueur)
         afficher_horizontale_milieu(x, y, longueur)
-
-    
-
-
 def lancer_jeu():
     """ Programme prinicipal de la gestion du jeu"""
     ## Ecrivez ici le code de la fonction
@@ -235,12 +202,13 @@ def lancer_jeu():
         afficher_message(0, -300, "Joueur1 a gagné")
     else :
         afficher_message(0, -300, "Joueur2 a gagné")
-
 lancer_jeu()
 TurtleScreen._RUNNING = True
 hideturtle()
-exitonclick()
 ## testez ici vos fonctions
+exitonclick()
+
+
 
 
 
