@@ -1,6 +1,7 @@
 from turtle import*
 from random import randint
 speed("fastest")
+speed("fastest")
 def nombre_aleatoire(n): 
     """
     Fonction renvoyant un entier aléatoire compris entre 1 et n.
@@ -71,20 +72,17 @@ def tracer_carre(x, y, longueur):
         forward(longueur)
         circle(10, 90)
     end_fill()
-
-
-
-
-def tracer_point(x, y, longueur, constant1, constant2):
+def tracer_point(x, y, longueur):
     """Procédure tracant un point aux coordonnés x,y. Ce point possède un 
     rayon égal à longueur/5."""
     ## Ecrivez ici le code de la fonction
     fillcolor('Black')
+    up()
+    goto(x,y)
     begin_fill()
-    goto(x + longueur/constant1, y + longueur /constant2 )
+    down()
     circle(longueur / 10)
     end_fill()
-
 def afficher_message(x, y, texte):
     """
     Procédure affichant le message 'texte' aux coordonnés x,y.
@@ -105,9 +103,8 @@ def afficher_un(x, y, longueur):
     point inférieur gauche de ce dé.
     """
     ## Ecrivez ici le code de la fonction
-    up()
-    tracer_point(x, y, longueur, 2.1, 2.2)
-    down()
+    tracer_point(x + longueur / 2, y + longueur/ 2 - longueur / 10, longueur)
+
 def afficher_diagonale_1(x, y, longueur):
     """
     Procédure affichant les deux points de la diagonale 1 d'un dé, dont la longueur 
@@ -115,10 +112,8 @@ def afficher_diagonale_1(x, y, longueur):
     point inférieur gauche de ce dé.
     """
     ## Ecrivez ici le code de la fonction
-    up()
-    tracer_point(x,y,longueur, 20, 150 )
-    tracer_point(x,y,longueur, 1.05, 1.1)
-    down()
+    tracer_point(x + longueur/10*8,y + longueur/10*8 - longueur/10, longueur)
+    tracer_point(x + longueur/10*2,y + longueur/10*2 - longueur/10, longueur)
 def afficher_diagonale_2(x, y, longueur):
     """
     Procédure affichant les deux points de la diagonale 2 d'un dé, dont la longueur 
@@ -126,10 +121,8 @@ def afficher_diagonale_2(x, y, longueur):
     point inférieur gauche de ce dé.
     """
     ## Ecrivez ici le code de la fonction
-    up()
-    tracer_point(x,y,longueur, 20, 1.1 )
-    tracer_point(x,y,longueur, 1.05, 150 )
-    down()
+    tracer_point(x + longueur/10*2,y + longueur/10*8 - longueur/10, longueur)
+    tracer_point(x + longueur/10*8,y + longueur/10*2 - longueur/10, longueur)
 def afficher_horizontale_milieu(x, y, longueur):
     """
     Procédure affichant les deux points de l'horizontale du milieu d'un dé, dont la longueur 
@@ -137,10 +130,8 @@ def afficher_horizontale_milieu(x, y, longueur):
     point inférieur gauche de ce dé.
     """
     ## Ecrivez ici le code de la fonction
-    up()
-    tracer_point(x,y,longueur, 20, 2.2)
-    tracer_point(x,y, longueur, 1.05, 2.2)
-    down()
+    tracer_point(x + longueur/10*2,y + longueur/2 - longueur/10, longueur)
+    tracer_point(x + longueur/10*8,y + longueur/2 - longueur/10, longueur)
 def choisir_face_a_afficher(x, y, lance, longueur):
     """
     Procédure affichant la face d'un dé correpondant à "lance", dont la longueur 
@@ -177,27 +168,33 @@ def choisir_face_a_afficher(x, y, lance, longueur):
 def lancer_jeu():
     """ Programme prinicipal de la gestion du jeu"""
     ## Ecrivez ici le code de la fonction
-    afficher_message(0, 250, "Bienvenue dans un jeu de dés !")
-    chiffre1 = nombre_aleatoire(6)
-    choisir_face_a_afficher(-250,0, chiffre1, 200)
-    chiffre2 = nombre_aleatoire(6)
-    choisir_face_a_afficher(0, 0, chiffre2, 200)
-    chiffre3 = nombre_aleatoire(6)
-    choisir_face_a_afficher(250, 0, chiffre3, 200)
-    score1 = (comparer_chiffre(chiffre1, chiffre2, chiffre3))
-    chiffre4 = nombre_aleatoire(6)
-    choisir_face_a_afficher(-250, -250, chiffre4, 200)
-    chiffre5 = nombre_aleatoire(6)
-    choisir_face_a_afficher(0, -250, chiffre5, 200)
-    chiffre6 = nombre_aleatoire(6)
-    choisir_face_a_afficher(250, -250, chiffre6, 200)
-    score2 = comparer_chiffre(chiffre4, chiffre5, chiffre6)
+    x = -250
+    toto = []
+    for i in range(3) :
+        afficher_message(0, 250, "Bienvenue dans un jeu de dés !")
+        chiffre = nombre_aleatoire(6)
+        toto.append(chiffre)
+        choisir_face_a_afficher(x,0, chiffre, 200)
+        x = x+250   
+        chiffre = 0
+        if i == 2 : 
+            score1 = int(comparer_chiffre(toto[0], toto[1], toto[2]))
+            afficher_message(580, 0,score1)
+    x = -250
+    list = []
+    for a in range(3) :
+        afficher_message(0, 250, "Bienvenue dans un jeu de dés !")
+        chiffre = nombre_aleatoire(6)
+        choisir_face_a_afficher(x,-250, chiffre, 200)
+        list.append(chiffre)
+        x = x+250
+        if a == 2 : 
+            score2 = int(comparer_chiffre(list[0], list[1], list[2]))
+            afficher_message(580, -200, score2)
     afficher_message(-400, 80, "Joueur1")
     afficher_message(-400, -175, "Joueur2")
     afficher_message(500, 0, "Score1:")
     afficher_message(500, -200, "Score2:")
-    afficher_message(580, 0,score1)
-    afficher_message(580, -200, score2)
     if score1 > score2 :
         afficher_message(0, -300, "Joueur1 a gagné")
     else :
@@ -207,8 +204,6 @@ TurtleScreen._RUNNING = True
 hideturtle()
 ## testez ici vos fonctions
 exitonclick()
-
-
 
 
 
